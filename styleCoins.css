@@ -1,0 +1,172 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: white;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+header {
+    background-color: lightblue;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+}
+
+.menu {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.menu_item {
+    display: inline-block;
+    margin: auto;
+    padding-right: 15px;
+}
+
+.menu_item:hover {
+    transform: scale(1.10);
+    transition-duration: 0.75s;
+}
+
+.menu_item_logout {
+    display: inline-block;
+    font-weight: bold;
+    color: indigo;
+}
+
+.menu_item_logout:hover {
+    transform: scale(1.10);
+    transition-duration: 0.75s;
+}
+
+.selected_item {
+    color: indigo;
+    font-size: 1.3em;
+    font-weight: bold;
+    display: inline-block;
+    margin: auto;
+    padding-right: 15px;
+}
+
+.main {
+    margin-top: 5em;
+}
+
+.search_box {
+    margin-top: 7em;
+}
+
+.search {
+    margin: auto;
+    padding: 1em 1em 1em 1em;
+    width: fit-content;
+    box-shadow: 0.2em 0.2em 1em rgb(67, 128, 164);
+    border-radius: 1em;
+}
+
+.search_label {
+    font-size: 1em;
+}
+
+.search_items {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+}
+
+.search_item {
+    margin-top: 1em;
+    margin-left: 1em;
+    font-size: 1em;
+}
+
+.search_button {
+    color: darkblue;
+    size: 2em;
+}
+
+.search_button:hover {
+    transform: scale(1.10);
+    color: black;
+    transition-duration: 0.75s;
+}
+
+input {
+    margin-top: 0.08em;
+    margin-bottom: 0.8em;
+    padding: 0.5em 0.5em;
+    font-size: 0.8em;
+    border: 1px solid rgb(128, 106, 207);
+    border-radius: 0.5em;
+    box-shadow: 0.2em 0.2em 0.2em rgb(67, 128, 164);
+}
+
+.search_item label {
+    display: block
+}
+
+.coins {
+    margin-top: 1em;
+}
+
+.all_coins {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+}
+
+.coin_prop {
+    list-style-type: none;
+    padding-inline-start: 0px;
+}
+
+.coin {
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    margin-left: 1.5em;
+    background-color: white;
+    box-shadow: 0.2em 0.2em 1em rgb(67, 128, 164);
+    border-radius: 1em;
+    min-width: fit-content;
+}
+
+.coin:hover {
+    border: solid blue 1px;
+}
+
+.coin_photos img {
+    width: 7em;
+    height: 7em;
+}
+
+.coin_info span {
+    display: block;
+}
+
+.btnAddCoin {
+    border: 2px solid blue;
+}
+
+.btnAddCoin:hover {
+    transform: scale(1.10);
+    transition-duration: 0.75s;
+}
