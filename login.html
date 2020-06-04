@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>NumAX</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="style.css">
-    <script src="main.js"></script>
+    <title> login page</title>
+    <link rel="stylesheet" href="./stylel.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:700,600' rel='stylesheet' type='text/css'>
     <header>
-        <ul>
-            <li>
-                <a href="login.html">
-                    Sign in
-                </a>
-            </li>
-            <li>
-                <a href="register.html">
-                    Register
-                </a>
-            </li>
-        </ul>
+        <nav class="menu">
+            <ul class="menu_items">
+                <li class="menu_item"><a href="#">HOME</a></li>
+                <li class="menu_item"><a href="catalog.html">CATALOG</li>
+            <li class="menu_item"><a href="#">MY COINS</a></li>
+                <li class="menu_item"><a href="#">ABOUT US</a></li>
+                <li class="menu_item"><a href="#">CONTACT</a></li>
+            </ul>
+        </nav>
     </header>
+
+    <h1>SIGN IN</h1>
+
+    <form method="post">
+
+        <div class="box">
+            <label for="email">email:</label><br>
+            <input type="email" name="email" class="email" />
+            <label for="password">password:</label><br>
+            <input type="password" name="password" class="password" />
+            <button type="submit" class="btnLOGIN"> Login </button>
+            <button type="button" class="btnSIGNUP"> Sign Up </button>
+        </div>
+
+    </form>
 </body>
+
 </html>
