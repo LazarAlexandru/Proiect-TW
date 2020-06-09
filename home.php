@@ -10,8 +10,10 @@ session_start();
         <meta charset="utf-8">
         <title>HOME</title>
         <link rel="stylesheet" href="home.css">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
 
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="https://unpkg.com/ionicon@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     </head>
 
     <body>
@@ -72,6 +74,45 @@ session_start();
                 ◙Ancients –Greek, Persian, Roman and Byzantine<br> ◙Foreign coins both modern and old, Medieval European. <br> ◙Chinese coins and paper money is a focus area.<br> ◙Foreign paper money, old and new. Chinese paper money especially sought.<br> ◙ US coinage and paper money of all kinds – pennies through $1000 bills. Large size currency is a specialty of ours, as well as silver dollars. Proof sets, mint sets, tokens, commemoratives, and bullion issues.<br> ◙Mint errors and currency
                 printing errors.<br> ◙Always buying 90% and 40% silver coins.<br> ◙ Private mint bullion issues.</p>
         </div>
+     
+        <div class="container">
+            <div class="image-gallery">
 
+<a href="images/img-1.png" class="img-1">
+<i class="icon-expand"></i>
+</a>
+
+<a href="images/img-2.jpg" class="img-2">
+<i class="icon-expand"></i>
+</a>
+
+<a href="images/img-3.jpg" class="img-3">
+<i class="icon-expand"></i>
+</a> 
+
+<a href="images/img-4.jpg" class="img-4">
+<i class="icon-expand"></i>
+</a>
+
+<a href="images/img-5.jpg" class="img-5">
+<i class="icon-expand"></i>
+</a>
+
+<a href="images/img-6.jpg" class="img-6">
+<i class="icon-expand"></i>
+</a>
+
+<a href="images/img-7.jpg" class="img-7">
+<i class="icon-expand"></i>
+</a>
+
+<a href="images/img-8.jpg" class="img-8">
+<i class="icon-expand"></i>
+</a>
+
+
+
+            </div>
+        </div>
 
     </body>
