@@ -5,6 +5,7 @@ body {
 }
 
 a {
+    color: indigo;
     text-decoration: none;
 }
 
@@ -104,4 +105,8 @@ h1 {
 
 .btnSIGNUP:hover {
     background: gray;
+}
+
+.error {
+    color: red;
 }

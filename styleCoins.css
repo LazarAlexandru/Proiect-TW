@@ -6,6 +6,7 @@ body {
 
 a {
     text-decoration: none;
+    color: indigo;
 }
 
 li {
@@ -31,23 +32,13 @@ header {
 }
 
 .menu_item {
+    color: indigo;
     display: inline-block;
     margin: auto;
     padding-right: 15px;
 }
 
 .menu_item:hover {
-    transform: scale(1.10);
-    transition-duration: 0.75s;
-}
-
-.menu_item_logout {
-    display: inline-block;
-    font-weight: bold;
-    color: indigo;
-}
-
-.menu_item_logout:hover {
     transform: scale(1.10);
     transition-duration: 0.75s;
 }

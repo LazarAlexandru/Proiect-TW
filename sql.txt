@@ -1,0 +1,1 @@
+INSERT INTO coins VALUES(1,'1 Euro Cent','Germany',2002,'Copper plated steel',' 2.3 g', ' 16.25 mm','c1f1.jpg','c1f2.jpg')

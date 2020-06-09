@@ -13,11 +13,9 @@
     <header>
         <nav class="menu">
             <ul class="menu_items">
-                <li class="menu_item"><a href="index.html">HOME</li>
-                <li class="menu_item"><a href="catalog.html">CATALOG</li>
-            <li class="menu_item"><a href="#">MY COINS</a></li>
-                <li class="menu_item"><a href="#">ABOUT US</a></li>
-                <li class="menu_item"><a href="#">CONTACT</a></li>
+                <li class="menu_item"><a href="home.php">HOME</li>
+                <li class="menu_item"><a href="catalog.php">CATALOG</li>
+                <li class="menu_item"><a href="Contact_us.php">CONTACT</a></li>
             </ul>
         </nav>
     </header>
@@ -50,6 +48,8 @@
             $result=$stmt->execute([$username,$password,$email]);
             if($result){
                  echo 'User created!';
+                 header("Location: loginPage.php");
+                 exit;
             }
             else{
                 echo 'There were errors while saving the data!';
