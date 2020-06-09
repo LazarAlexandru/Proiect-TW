@@ -1,3 +1,9 @@
+<?php
+session_start();
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -181,13 +187,31 @@
 
 <body>
     <header>
-        <nav class="menu">
+    <nav class="menu">
             <ul class="menu_items">
-                <li class="menu_item"><a href="">HOME</li>
-                <li class="menu_item"><a href="catalog.html">CATALOG</li>
-                
-                <li class="menu_item"><a href="#">ABOUT US</a></li>
-                <li class="menu_item"><a href="#">CONTACT</a></li>
+                <li class="menu_item"><a href="home.php">HOME</a></li>
+                <li class="menu_item"><a href="catalog.php">CATALOG </a> </li>
+
+                <?php if (isset($_SESSION['User'])) { ?>
+                    <li class="menu_item">
+                        <?php echo '<a href="myCoins.php">MY COINS </a>'; ?>
+                    </li>
+                <?php } ?>
+
+                <li class="selected_item"> CONTACT </li>
+
+                <?php if (isset($_SESSION['User'])) { ?>
+                    <li class="menu_item">
+                        <?php echo '<a href="logout.php?logout">Logout</a>'; ?>
+                    </li>
+                <?php } ?>
+
+                <?php if (!isset($_SESSION['User'])) { ?>
+                    <li class="menu_item">
+                        <?php echo '<a href="loginPage.php">Login</a>'; ?>
+                    </li>
+                <?php } ?>
+
             </ul>
         </nav>
     </header>
