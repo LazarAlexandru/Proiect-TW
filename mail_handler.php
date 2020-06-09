@@ -7,7 +7,7 @@ $msg=$_POST['msg'];
 
 $to='skydubz9@gmail.com';
 $subject='Form submission';
-$message="Name:".$name."\n"."Email:".$email."\n"."Wrote the following: "."\n\n".$msg;
+$message="Name:".$name."\n"."Email:".$email."\n"."Phone:".$phone."\n"."Wrote the following: "."\n\n".$msg;
 $headers="From:".$email;
 if(mail($to,$subject,$message,$headers)){
 echo "<h1>Sent successfull"." ".$name.",we will contact you soon!</h1>";
