@@ -27,7 +27,7 @@ session_start();
                     </li>
                 <?php } ?>
 
-                <li class="menu_item"><a href="Contact_us.php">CONTACT</a></li>
+                <li class="menu_item"><a href="index.php">CONTACT</a></li>
 
                 <?php if (isset($_SESSION['User'])) { ?>
                     <li class="menu_item">

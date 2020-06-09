@@ -23,7 +23,7 @@ if(isset($_SESSION['User'])){
                 <li class="menu_item"><a href="home.php">HOME</a></li>
                 <li class="menu_item"><a href="catalog.php">CATALOG</a></li>
                 <li class="selected_item">MY COINS</li>
-                <li class="menu_item"><a href="Contact_us.php">CONTACT</a></li>
+                <li class="menu_item"><a href="index.php">CONTACT</a></li>
                 
                 <?php if (isset($_SESSION['User'])) { ?>
                     <li class="menu_item">
