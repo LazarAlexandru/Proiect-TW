@@ -110,3 +110,31 @@ h1 {
 .error {
     color: red;
 }
+
+.btnUpload {
+    padding: 0.5em 0.5em;
+    font-size: 1em;
+    border: 1px solid rgb(128, 106, 207);
+    border-radius: 0.5em;
+    box-shadow: 0.2em 0.2em 0.2em rgb(67, 128, 164);
+}
+
+.btnUpload:hover {
+    transform: scale(1.10);
+    transition-duration: 0.75s;
+}
+
+.link_back {
+    margin-top: 1em;
+    margin-bottom: 2em;
+    padding: 0.5em 0.5em;
+    font-size: 1em;
+    border-radius: 0.5em;
+    box-shadow: 0.2em 0.2em 0.2em rgb(67, 128, 164);
+    border: 1px solid rgb(128, 106, 207);
+}
+
+.link_back:hover {
+    transform: scale(1.10);
+    transition-duration: 0.75s;
+}

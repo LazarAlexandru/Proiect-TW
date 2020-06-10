@@ -1,1 +1,12 @@
 INSERT INTO coins VALUES(1,'1 Euro Cent','Germany',2002,'Copper plated steel',' 2.3 g', ' 16.25 mm','c1f1.jpg','c1f2.jpg')
+
+CREATE TABLE users_coins (
+  id_user INT NOT NULL ,
+  name VARCHAR(45) NOT NULL,
+  country VARCHAR(45) NOT NULL,
+  year INT NOT NULL ,
+  composition VARCHAR(45) NOT NULL,
+  weight VARCHAR(45) NOT NULL,
+  diameter VARCHAR(45) NOT NULL,
+  face1 VARCHAR(45) NOT NULL,
+  face2 VARCHAR(45) NOT NULL)

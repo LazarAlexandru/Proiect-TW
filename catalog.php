@@ -100,8 +100,8 @@ session_start();
                                 <ul class="coin_prop">
                                     <li>
                                         <div class="coin_photos">
-                                            <img src=<?php echo $row['face1']; ?> alt="coin photo">
-                                            <img src=<?php echo $row['face2']; ?> alt="coin photo">
+                                            <img src=coins/<?php echo $row['face1']; ?> alt="coin photo">
+                                            <img src=coins/<?php echo $row['face2']; ?> alt="coin photo">
                                         </div>
                                     </li>
                                     <li>
@@ -124,21 +124,7 @@ session_start();
                                         </div>
                                     </li>
 
-                                    <br>
-                                    <li>
-                                        <?php
-                                        if (isset($_SESSION['User'])) {
-                                        ?>
-                                            <form method="POST">
-                                                <input type="submit" id=<?php echo $num; ?> class="button" name="add" value="add coin" /></form>
-
-                                        <?php
-                                            if (isset($_POST['add'])) {
-                                                addCoinToCol($row['id']);
-                                            }
-                                        }
-                                        ?>
-                                    </li>
+                                
                                 </ul>
                             </li>
 
@@ -157,18 +143,3 @@ session_start();
 
 </html>
 
-<?php
-function addCoinToCol($idCoin)
-{
-    $id_user = $_SESSION['UserId'];
-    $con = mysqli_connect("localhost", "root", "ParolamySQL0", "database");
-
-
-    if (!$con) {
-        die(' Please Check Your Connection' . mysqli_error($con));
-    } else {
-        $query = "insert into users_coins values($id_user,$idCoin)";
-        mysqli_query($con, $query);
-    }
-}
-?>
