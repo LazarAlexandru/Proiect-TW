@@ -9,7 +9,7 @@ if (isset($_SESSION['User'])) {
     <html>
 
     <head>
-        <title> catalog page</title>
+        <title> my coins page</title>
         <link rel="stylesheet" href="./styleCoins.css" type="text/css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -41,6 +41,8 @@ if (isset($_SESSION['User'])) {
 
         <div class="main">       
              <a href="uploadForm.php" class="link_upload">UPLOAD YOUR COIN</a>
+
+            <form name="searchForm" action="search1.php" method="post">
             <div class="search_box">
                 <div class="search">
                     <label class="search_label">Search by:</label>
@@ -49,106 +51,145 @@ if (isset($_SESSION['User'])) {
 
                         <li class="search_item">
                             <label for="name">Name:</label>
-                            <input type="text" name="name" id="name" placeholder="10 Lei">
+                            <input type="text" name="nameSC" placeholder="10 Lei">
                         </li>
 
                         <li class="search_item">
                             <label for="country">Country:</label>
-                            <input type="text" name="country" id="country" placeholder="Romania">
+                            <input type="text" name="countrySC" placeholder="Romania">
                         </li>
 
                         <li class="search_item">
                             <label for="year">Year:</label>
-                            <input type="number" name="year" id="year" placeholder="1918">
+                            <input type="number" name="yearSC" placeholder="1918">
                         </li>
 
                     </ul>
-                    <button class="search_button">SEARCH</button>
+                    <button type="submit" class="search_button">SEARCH</button>
+
+
                 </div>
-
-              
-
+                
             </div>
-            <div class="coins">
-                <ul class="all_coins">
+        </form>
+        <div class="coins">
+
+        <a href="myCoins.php" class="back">SHOW ALL COINS</a>
+            <ul class="all_coins">
+
+
+                <?php
+                $con = mysqli_connect("localhost", "root", "ParolamySQL0", "database");
+
+
+                if (!$con) {
+                    die(' Please Check Your Connection' . mysqli_error($con));
+                } else {
+
+
+                    $query = "select * from users_coins where id_user=$idUser";
+                    $name = "";
+                    $country = "";
+                    $year = 0;
+
+
+                    if (isset($_GET['name']) && !empty($_GET['name']) && isset($_GET['country']) &&  !empty($_GET['country']) && isset($_GET['year']) && !empty($_GET['year'])) {
+
+                        $name = $_GET['name'];
+                        $country = $_GET['country'];
+                        $year = $_GET['year'];
+                        $query = "select * from users_coins where id_user=$idUser and name = '$name' and country = '$country' and year = $year ";
+                    } else
+                     if (isset($_GET['name']) && !empty($_GET['name']) && isset($_GET['country']) &&  !empty($_GET['country'])) {
+                        $name = $_GET['name'];
+                        $country = $_GET['country'];
+                        $query = "select * from users_coins where id_user=$idUser and name = '$name' and country = '$country' ";
+                    } else
+                    if (isset($_GET['name']) && !empty($_GET['name']) && isset($_GET['year']) &&  !empty($_GET['year'])) {
+                        $name = $_GET['name'];
+                        $year = $_GET['year'];
+                        $query = "select * from users_coins where id_user=$idUser and name = '$name' and year = $year ";
+                    } else
+                   if (isset($_GET['country']) &&  !empty($_GET['country']) && isset($_GET['year']) &&  !empty($_GET['year'])) {
+
+                        $country = $_GET['country'];
+                        $year = $_GET['year'];
+                        $query = "select * from users_coins where id_user=$idUser and  country = '$country' and year = $year";
+                    } else
+                    if (isset($_GET['name']) && !empty($_GET['name'])) {
+                        $name = $_GET['name'];
+                        $query = "select * from users_coins where id_user=$idUser and name = '$name' ";
+                    } else
+                    if (isset($_GET['country']) && !empty($_GET['country'])) {
+
+                        $country = $_GET['country'];
+
+                        $query = "select * from users_coins where id_user=$idUser and country = '$country' ";
+                    } else
+                    if (isset($_GET['year']) && !empty($_GET['year'])) {
+                        $year = $_GET['year'];
+                        $query = "select * from users_coins where id_user=$idUser and year = $year";
+                    }
+                       
+                    $result = mysqli_query($con, $query);
 
 
 
-                    <?php
-                    $con = mysqli_connect("localhost", "root", "ParolamySQL0", "database");
+                    if (mysqli_num_rows($result) == 0) { ?>
 
-
-                    if (!$con) {
-                        die(' Please Check Your Connection' . mysqli_error($con));
+                        <p>you don't have coins in your collection!</p>
+                        <?php
                     } else {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
 
-                        $query1 = "select id_user from  users_coins  where id_user = $idUser";
-                        $result1 = mysqli_query($con, $query1);
+                            <li class="coin">
+                                <ul class="coin_prop">
+                                    <li>
+                                        <div class="coin_photos">
+                                            <img src=coins/users_coins/<?php echo $row['face1']; ?> alt="coin photo">
+                                            <img src=coins/users_coins/<?php echo $row['face2']; ?> alt="coin photo">
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="coin_info">
+                                            <span>
+                                                Name : <?php echo $row['name'];
+                                                        $num = $row['name']; ?>
+                                            </span>
 
-                        if (mysqli_num_rows($result1) == 0) {
-                    ?>
+                                            <span>
+                                                Country : <?php echo $row['country']; ?>
+                                            </span>
 
-                            <p>You don't have coins in your collection!</p>
-                            <?php
-                        } else {
-                            $query = "select * from users_coins where id_user = $idUser";
-                            $result = mysqli_query($con, $query);
-                            while ($row = mysqli_fetch_assoc($result)) {
-                            ?>
-
-                                <li class="coin">
-                                    <ul class="coin_prop">
-                                        <li>
-                                            <div class="coin_photos">
-                                                <img src=coins/users_coins/<?php echo $row['face1']; ?> alt="coin photo">
-                                                <img src=coins/users_coins/<?php echo $row['face2']; ?> alt="coin photo">
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="coin_info">
-                                                <span>
-                                                    Name : <?php echo $row['name'];
-                                                            $num = $row['name']; ?>
-                                                </span>
-
-                                                <span>
-                                                    Country : <?php echo $row['country']; ?>
-                                                </span>
-
-                                                <span>
-                                                    Year : <?php echo $row['year']; ?>
-                                                </span>
-                                                <span>
-                                                    <?php echo $row['composition']; ?> | <?php echo $row['weight']; ?> | <?php echo $row['diameter']; ?>
-                                                </span>
-                                            </div>
-                                        </li>
-
-                                        <br>
-                                        <li>
-
-                                        </li>
-                                    </ul>
-                                </li>
+                                            <span>
+                                                Year : <?php echo $row['year']; ?>
+                                            </span>
+                                            <span>
+                                                <?php echo $row['composition']; ?> | <?php echo $row['weight']; ?> | <?php echo $row['diameter']; ?>
+                                            </span>
+                                        </div>
+                                    </li>
 
 
-                    <?php
+                                </ul>
+                            </li>
 
-                            }
+                <?php
                         }
-                    } ?>
+                    }
+                } ?>
 
-
-                </ul>
-            </div>
+            </ul>
         </div>
+    </div>
 
 
 
-    </body>
+</body>
 
-    </html>
-
+</html>
 <?php
 
-}
+            }
+            ?>
