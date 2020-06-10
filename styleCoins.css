@@ -141,6 +141,7 @@ input {
 .coin_prop {
     list-style-type: none;
     padding-inline-start: 0px;
+    margin: auto;
 }
 
 .coin {
@@ -153,7 +154,7 @@ input {
     background-color: white;
     box-shadow: 0.2em 0.2em 1em rgb(67, 128, 164);
     border-radius: 1em;
-    min-width: fit-content;
+    min-width: 22em;
 }
 
 .coin:hover {
