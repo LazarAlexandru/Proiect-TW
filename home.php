@@ -65,6 +65,7 @@ session_start();
             <img src="coin_wall.png">
         </div>
 
+       
         <div>
             <p> Compass is a knowledgeable and active participant in the rare coin and currency field. We’ve been involved in collecting and trading in coins and paper money for many years, and have the necessary expertise to evaluate numismatic material
                 in a wide variety of fields. In areas where our expertise is not as strong, we associate with partners across the country who help us to identify and evaluate the more obscure material. The growth of online resources, and the extraordinary
@@ -114,5 +115,12 @@ session_start();
 
             </div>
         </div>
+<?php
 
+?>
+<div>
+    <title>Database chart</title>
+
+
+</div>
     </body>
