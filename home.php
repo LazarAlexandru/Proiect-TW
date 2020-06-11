@@ -62,7 +62,7 @@ session_start();
 
         <div class="welcome-text">
             <h1>We love coins</h1>
-            <img src="coin_wall.png">
+            <img src="coin_wall1.png">
         </div>
 
        
