@@ -1,7 +1,7 @@
 body {
     font-family: 'Open Sans', sans-serif;
-    background: white;
     text-align: center;
+    background-image: url("coin_wall1.jpg");
 }
 
 a {
@@ -64,6 +64,7 @@ header {
 }
 
 .search {
+    background-color: white;
     margin: auto;
     flex-direction: column;
     justify-content: center;
@@ -103,6 +104,7 @@ header {
 }
 
 .back {
+    background-color: white;
     margin-top: 1em;
     margin-bottom: 2em;
     padding: 0.5em 0.5em;
@@ -180,6 +182,7 @@ input {
 }
 
 .link_upload {
+    background-color: white;
     padding: 0.5em 0.5em;
     font-size: 1em;
     border: 1px solid rgb(128, 106, 207);
