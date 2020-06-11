@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raport Numismatic</title>
+</head>
+
+<body prefix="schema: http://schema.org">
+    <header>
+        <h1>
+            RAPORT NUMISMATIC
+        </h1>
+
+        <div>
+            <section typeof="Autori">
+                <h2>Autori:</h2>
+                <ul>
+                    <li>Filiorenu Marius</li>
+                    <li>Izmana Iuliana</li>
+                    <li>Lazar Alexandru</li>
+                </ul>
+
+            </section>
+        </div>
+    </header>
+
+    <section typeof="Abstract">
+        <h2>Abstract</h2>
+        <p>
+            Raportul prezinta cerintele principale ale proiectului precum si functionalitatile esentiale ale aplicatiei.</p>
+    </section>
+    <section>
+        <h3>Cerinte:</h3>
+        <p> Să se dezvolte o aplicație Web destinată colecționarilor de monede. Pe baza facilităților de căutare multi-criteriala implementate, utilizatorii autentificați vor putea crea, inventaria și partaja informații despre monede de interes în functie
+            de diverse caracteristici (imagine, valoare, țară, perioadă de emisie, istoric etc.), plus vor putea importa/exporta datele referitoare la monedele deținute. Se vor genera statistici diverse ce pot fi exportate în formate deschise – minimal,
+            CSV si PDF. Se va crea, de asemenea, un clasament al celor mai populare emisii monetare, disponibil și ca flux de date RSS. Inspiratie: Numista. Bonus: utilizarea datelor RDF oferite de nomisma.org.
+        </p>
+
+
+        <section>
+            <h3>Functionalitati ale aplicatiei</h3>
+
+
+            <ul>
+                <li>Login</li>
+                <li>Logout</li>
+                <li>Register</li>
+                <li>Vizualizare catalog monede</li>
+                <li>Cautare/Filtrare monede</li>
+                <li>Adaugare monede</li>
+
+            </ul>
+
+
+        </section>
+
+    </section>
+    <section>
+        <h3>Limbaje folosite</h3>
+        <ul>
+
+            <li><strong>HTML5</strong> utilizat pentru structurarea continutului</li>
+            <li><strong>CSS/CSS3</strong> utilizat pentru stilizarea paginilor</li>
+            <li><strong>JavaScript</strong></li>
+            <li><strong>PHP</strong> utilizat pentru back-end, pentru comunicarea cu serverul Apache si baza de date MySQL</li>
+            <li><strong>MySQL</strong> utilizat pentru managementul bazei de date</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Database Diagram</h3>
+        <figure typeof="image">
+            <img width="1000" height="300" src="database_diagram.jpg" alt="Database Diagram">
+        </figure>
+    </section>
+    <section>
+        <h3>Use Case Diagram</h3>
+        <figure typeof="image">
+            <img width="700" height="700" src="use_case_diagram.jpg" alt="Use Case Diagram">
+        </figure>
+    </section>
+
+    <section>
+
+        <h1>Proiect</h1>
+
+        <ul>
+            <li><strong>Login/Register</strong> utilizatorii se pot inregistra si loga in aplicatie pentru ca sa poata incarca propriile monede, altfel le este disponibil doar catalogul.
+            </li>
+        </ul>
+
+        <ul>
+            <li><strong>Catalog</strong> aici utilizatorii pot vizualiza monedele din baza de date, de asemenea se pot cauta/filtra monedele. </li>
+        </ul>
+
+
+        <ul>
+            <li><strong>My Coins</strong> sectiune disponibila doar utilizatorilor autentificati, unde pot vizualiza si incarca propriile monede, de asemenea se pot cauta/filtra monedele. </li>
+        </ul>
+
+        <ul>
+            <li><strong>Contact</strong> utilizatorii ne pot contacta prin email.</li>
+        </ul>
+
+        <ul>
+            <li><strong>Home</strong></li>
+        </ul>
+    </section>
+
+</body>
+
+</html>
