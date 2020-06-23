@@ -46,8 +46,8 @@
                                 <ul class="coin_prop">
                                     <li>
                                         <div class="coin_photos">
-                                            <img src=coins/<?php echo $row['face1']; ?> alt="coin photo">
-                                            <img src=coins/<?php echo $row['face2']; ?> alt="coin photo">
+                                            <img src=coins/users_coins/<?php echo $row['face1']; ?> alt="coin photo">
+                                            <img src=coins/users_coins/<?php echo $row['face2']; ?> alt="coin photo">
                                         </div>
                                     </li>
                                     <li>
