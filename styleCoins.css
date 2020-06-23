@@ -94,7 +94,7 @@ header {
 
 .search_button {
     color: darkblue;
-    size: 2em;
+    size: 3em;
 }
 
 .search_button:hover {
@@ -112,6 +112,27 @@ header {
     border-radius: 0.5em;
     box-shadow: 0.2em 0.2em 0.2em rgb(67, 128, 164);
     border: 1px solid rgb(128, 106, 207);
+}
+
+.back:hover {
+    transform: scale(1.10);
+    transition-duration: 0.75s;
+}
+
+.back1 {
+    background-color: white;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    padding: 0.5em 0.5em;
+    font-size: 0.8em;
+    border-radius: 0.5em;
+    box-shadow: 0.2em 0.2em 0.2em rgb(67, 128, 164);
+    border: 1px solid rgb(128, 106, 207);
+}
+
+.back1:hover {
+    transform: scale(1.10);
+    transition-duration: 0.75s;
 }
 
 input {
@@ -185,7 +206,7 @@ input {
     background-color: white;
     padding: 0.5em 0.5em;
     font-size: 1em;
-    border: 1px solid rgb(128, 106, 207);
+    border: 1px solid #806acf;
     border-radius: 0.5em;
     box-shadow: 0.2em 0.2em 0.2em rgb(67, 128, 164);
 }
@@ -193,4 +214,136 @@ input {
 .link_upload:hover {
     transform: scale(1.10);
     transition-duration: 0.75s;
+}
+
+.paragraf {
+    background-color: white;
+    padding: 0.5em 0.5em;
+    font-size: 1em;
+    border: 1px solid rgb(128, 106, 207);
+    border-radius: 0.5em;
+    box-shadow: 0.2em 0.2em 0.2em rgb(67, 128, 164);
+    width: fit-content;
+    margin: auto;
+}
+
+.old_new_coin {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+}
+
+.btnDelete {
+    padding: 0.5em 0.5em;
+    font-size: 1em;
+    border: 1px solid #806acf;
+    border-radius: 0.5em;
+    box-shadow: 0.2em 0.2em 0.2em rgb(67, 128, 164);
+}
+
+.form_box {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 22em;
+    margin: auto;
+    border: 1px solid #806acf;
+    border-radius: 0.5em;
+    box-shadow: 0.2em 0.2em 0.2em rgb(67, 128, 164);
+    padding-top: 1em;
+}
+
+.inputForm {
+    margin-top: 0.08em;
+    margin-bottom: 0.8em;
+    padding: 0.5em 0.5em;
+    font-size: 0.8em;
+    border: 1px solid rgb(128, 106, 207);
+    border-radius: 0.5em;
+    box-shadow: 0.2em 0.2em 0.2em rgb(67, 128, 164);
+    width: 18em;
+    height: 2em;
+}
+
+label {
+    display: block;
+}
+
+.btnUpload {
+    background-color: white;
+    padding: 0.5em 0.5em;
+    font-size: 1em;
+    border: 1px solid rgb(128, 106, 207);
+    border-radius: 0.5em;
+    box-shadow: 0.2em 0.2em 0.2em rgb(67, 128, 164);
+}
+
+.btnUpload:hover {
+    transform: scale(1.10);
+    transition-duration: 0.75s;
+}
+
+.select {
+    margin-top: 0.08em;
+    margin-bottom: 0.8em;
+    padding: 0.5em 0.5em;
+    font-size: 1em;
+    border: 1px solid rgb(128, 106, 207);
+    border-radius: 0.5em;
+    box-shadow: 0.2em 0.2em 0.2em rgb(67, 128, 164);
+    width: 18em;
+    height: 3em;
+}
+
+.welcome {
+    margin-top: 12em;
+}
+
+.welcome h1 {
+    color: #2c3e50;
+    font-size: 5em;
+}
+
+.welcome h1:hover {
+    text-shadow: 0 0 7px white, 0 0 5px #0000FF;
+}
+
+.info {
+    margin-top: 1em;
+    margin-left: 7em;
+    margin-right: 7em;
+}
+
+.prinfo {
+    font-size: 1em;
+    color: black;
+    text-shadow: 0 0 7px white, 0 0 5px #0000FF;
+    text-align: left;
+}
+
+.info:hover {
+    transform: scale(1.05);
+    transition-duration: 0.75s;
+}
+
+.imgg {
+    height: 10em;
+    width: 10em;
+    padding-left: 5px;
+}
+
+.imgg:hover {
+    transform: scale(1.55);
+    transition-duration: 0.75s;
+    box-shadow: 0.2em 0.2em 1em white;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 4em;
+    margin-right: 4em;
 }

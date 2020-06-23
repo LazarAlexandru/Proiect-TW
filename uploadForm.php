@@ -35,10 +35,10 @@ session_start();
             <label for="composition">Composition:</label><br>
             <input type="composition" name="composition" class="email" />
 
-            <label for="weight">Weight:</label><br>
+            <label for="weight">Weight(g):</label><br>
             <input type="weight" name="weight" class="email" />
 
-            <label for="diameter">Diameter:</label><br>
+            <label for="diameter">Diameter(mm):</label><br>
             <input type="diameter" name="diameter" class="email" />
 
 

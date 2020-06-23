@@ -51,6 +51,11 @@
                 <li>Vizualizare catalog monede</li>
                 <li>Cautare/Filtrare monede</li>
                 <li>Adaugare monede</li>
+                <li>Adaugare monede din catalog in colectia proprie</li>
+                <li>Descarcare monede(format csv sau PDF) </li>
+                <li>Vizualizare statistici(+clasament ca flux de date RSS) + descarcare statistici(format csv sau PDF)</li>
+                <li>Modul de administrare</li>
+
 
             </ul>
 
@@ -64,7 +69,7 @@
 
             <li><strong>HTML5</strong> utilizat pentru structurarea continutului</li>
             <li><strong>CSS/CSS3</strong> utilizat pentru stilizarea paginilor</li>
-            <li><strong>JavaScript</strong></li>
+            <li><strong>JavaScript, Ajax</strong></li>
             <li><strong>PHP</strong> utilizat pentru back-end, pentru comunicarea cu serverul Apache si baza de date MySQL</li>
             <li><strong>MySQL</strong> utilizat pentru managementul bazei de date</li>
         </ul>
@@ -73,13 +78,13 @@
     <section>
         <h3>Database Diagram</h3>
         <figure typeof="image">
-            <img width="1000" height="300" src="database_diagram.jpg" alt="Database Diagram">
+            <img width="1000" height="400" src="database_diagram.jpg" alt="Database Diagram">
         </figure>
     </section>
     <section>
         <h3>Use Case Diagram</h3>
         <figure typeof="image">
-            <img width="700" height="700" src="use_case_diagram.jpg" alt="Use Case Diagram">
+            <img width="800" height="700" src="use_case_diagram.jpg" alt="Use Case Diagram">
         </figure>
     </section>
 
@@ -90,23 +95,20 @@
         <ul>
             <li><strong>Login/Register</strong> utilizatorii se pot inregistra si loga in aplicatie pentru ca sa poata incarca propriile monede, altfel le este disponibil doar catalogul.
             </li>
-        </ul>
 
-        <ul>
-            <li><strong>Catalog</strong> aici utilizatorii pot vizualiza monedele din baza de date, de asemenea se pot cauta/filtra monedele. </li>
-        </ul>
+            <li><strong>Catalog</strong> aici utilizatorii pot vizualiza monedele din baza de date, pot adauga monede din catalog in colectia proprie, de asemenea se pot cauta/filtra monedele. </li>
 
+            <li><strong>My Coins</strong> sectiune disponibila doar utilizatorilor autentificati, unde pot vizualiza si incarca propriile monede,aceste monede pot fi descarcate in format csv/pdf, de asemenea se pot cauta/filtra monedele. </li>
 
-        <ul>
-            <li><strong>My Coins</strong> sectiune disponibila doar utilizatorilor autentificati, unde pot vizualiza si incarca propriile monede, de asemenea se pot cauta/filtra monedele. </li>
-        </ul>
+            <li><strong>My Collection</strong> utilizatorii autentificati pot vizualiza aici monedele adaugate din catalog.</li>
 
-        <ul>
+            <li><strong>Statistics</strong> utilizatorii pot vizualiza diverse statistici despre monedele existente, un top al celor mai populare monede(clasament disponibil si ca flux de date RSS) si un top al celor mai cautate monede.</li>
+
             <li><strong>Contact</strong> utilizatorii ne pot contacta prin email.</li>
-        </ul>
 
-        <ul>
             <li><strong>Home</strong></li>
+
+            <li><strong>Modul de administrare</strong> Administratorul autentificat poate adauga noi monede in baza de date, poate vizualiza/elmina monede/useri din baza de date, de aseamenea poate vizualiza monedele adaugate de fiecare user.</li>
         </ul>
     </section>
 

@@ -1,26 +1,28 @@
 <?php
-session_start();
-$target_dir = "coins/users_coins/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$target_file1 = $target_dir . basename($_FILES["fileToUpload1"]["name"]);
+
+$target_dir = "coins/";
+$target_file = $target_dir . basename($_FILES["fileToUploadC"]["name"]);
+$target_file1 = $target_dir . basename($_FILES["fileToUploadC1"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 $imageFileType1 = strtolower(pathinfo($target_file1,PATHINFO_EXTENSION));
 
-$idUser = $_SESSION['UserId'];
-$face1 = basename($_FILES["fileToUpload"]["name"]);
-$face2 = basename($_FILES["fileToUpload1"]["name"]);
-$name = $_POST['name'];
-$country = $_POST['country'];
-$year = $_POST['year'];
-$composition = $_POST['composition'];
-$weight = $_POST['weight'];
-$diameter = $_POST['diameter'];
+
+$face1 = basename($_FILES["fileToUploadC"]["name"]);
+$face2 = basename($_FILES["fileToUploadC1"]["name"]);
+$name = $_POST['nameC'];
+$country = $_POST['countryC'];
+$year = $_POST['yearC'];
+$composition = $_POST['compositionC'];
+$weight = $_POST['weightC'];
+$diameter = $_POST['diameterC'];
+$no_src = 0;
+$no_add = 0;
 
 // Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-  $check1 = getimagesize($_FILES["fileToUpload1"]["tmp_name"]);
+if(isset($_POST["submitCoin"])) {
+  $check = getimagesize($_FILES["fileToUploadC"]["tmp_name"]);
+  $check1 = getimagesize($_FILES["fileToUploadC1"]["tmp_name"]);
   if($check !== false && $check1 !== false) {
     $uploadOk = 1;
   } else {
@@ -43,7 +45,7 @@ if ($uploadOk == 0) {
   echo "Sorry, your files was not uploaded.";
 // if everything is ok, try to upload file
 } else {
-  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file) && move_uploaded_file($_FILES["fileToUpload1"]["tmp_name"], $target_file1)) {
+  if (move_uploaded_file($_FILES["fileToUploadC"]["tmp_name"], $target_file) && move_uploaded_file($_FILES["fileToUploadC1"]["tmp_name"], $target_file1)) {
   } else {
     echo "Sorry, there was an error uploading your file.";
   }
@@ -55,12 +57,12 @@ $con = mysqli_connect("localhost", "root", "ParolamySQL0", "database");
                 if (!$con) {
                     die(' Please Check Your Connection' . mysqli_error($con));
                 } else {
-                  $query = "insert into users_coins(id_user,name,country,year,composition,weight,diameter,face1,face2) values(?,?,?,?,?,?,?,?,?)";
+                  $query = "insert into coins(name,country,year,composition,weight,diameter,face1,face2,no_src,no_add) values(?,?,?,?,?,?,?,?,?,?)";
                   $statement = $con ->prepare($query);
-                  $statement->bind_param("issisddss",$idUser,$name,$country,$year,$composition,$weight,$diameter,$face1,$face2);
+                  $statement->bind_param("ssisddssii",$name,$country,$year,$composition,$weight,$diameter,$face1,$face2,$no_src,$no_add);
                   if($statement->execute()){
         
-                  header("Location:myCoins.php");
+                  header("Location:adminPage.php");
                 }
               else
               echo "no insert:   "   .mysqli_error($con) ;

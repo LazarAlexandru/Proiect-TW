@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+        <rss version='2.0'>
+        <channel> 
+        <title> NUMAX feed </title>
+        <link> http://localhost/tw/Proiect-TW-master/catalog.php </link>
+        <description> Click to see our catalog of coins </description>
+        <language>en-us </language>
+        <item>
+        <title> Most popular coins </title>
+        <link> http://localhost/tw/Proiect-TW-master/statistics.php </link>
+        <description><span><span>Name: 40 Lire - Joachim Murat</span><span>Country: Kingdom of Naples(Italian states)</span><span>Year: 1813</span></span><span><span>Name: 10 Lepta</span><span>Country: Greece</span><span>Year: 1976</span></span><span><span>Name: 20 Lepta</span><span>Country: Greece</span><span>Year: 1973</span></span></description>
+        </item>
+        </channel>
+        </rss>

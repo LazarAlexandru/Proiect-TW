@@ -15,7 +15,6 @@
                 <li class="menu_item"><a href="home.php">HOME</a></li>
                 <li class="menu_item"><a href="catalog.php">CATALOG</a></li>
                 <li class="menu_item"><a href="statistics.php">STATISTICS</a></li>
-                <li class="menu_item"><a href="index.php">CONTACT</a></li>
             </ul>
         </nav>
     </header>
@@ -27,8 +26,8 @@
 
         <div class="box">
             <label for="email">email:</label><br>
-            <input type="email" id="email" name="email" class="email" />
-            <?php if (isset($_POST['Login'])) { ?>
+            <input type="email" name="emailAd" class="email" />
+            <?php if (isset($_POST['LoginAd'])) { ?>
                 <span class="error"> <?php echo verifyEmail(); ?></span>
                 <br>
             <?php
@@ -36,16 +35,15 @@
             ?>
 
             <label for="password">password:</label><br>
-            <input type="password" id="password" name="password" class="password" />
-            <?php if (isset($_POST['Login'])) { ?>
+            <input type="password" name="passwordAd" class="password" />
+            <?php if (isset($_POST['LoginAd'])) { ?>
                 <span class="error"> <?php echo verifyPassword(); ?></span>
                 <br>
             <?php
             }
             ?>
-            <button type="submit" value="Login" on action="isEmpty();" name=Login class="btnLOGIN"> Login </button>
-            <a href="registerPage.php" class="btnSIGNUP">Sign Up</a>  
-            <a href="loginAdmin.php" class="btnSIGNUP">Login as admin</a>  
+            <button type="submit"   name="LoginAd" class="btnLOGIN"> Login </button>
+            
         </div>
 
     </form>
@@ -65,12 +63,12 @@ function verifyEmail()
     if (!$con) {
         die(' Please Check Your Connection' . mysqli_error($con));
     } else {
-        if (isset($_POST['Login'])) {
+        if (isset($_POST['LoginAd'])) {
 
-            $email = $_POST['email'];
+            $email = $_POST['emailAd'];
 
 
-            $query = "select * from users where email = ?";
+            $query = "select * from admins where email = ?";
             $statement = $con ->prepare($query);
             $statement -> bind_param("s",$email);
 
@@ -79,7 +77,7 @@ function verifyEmail()
 
             if (mysqli_num_rows($result) == 0) //  if ($result -> mysqli_num_rows() == 0) { 
 
-                return "Empty/Invalid email! If you don't have an account yet, register first!";
+                return "Empty/Invalid email!";
 
             else
                 return "";
@@ -97,13 +95,13 @@ function verifyPassword()
     if (!$con) {
         die(' Please Check Your Connection' . mysqli_error($con));
     } else {
-        if (isset($_POST['Login'])) {
+        if (isset($_POST['LoginAd'])) {
 
-            $email = $_POST['email'];
-            $password = $_POST['password'];
+            $email = $_POST['emailAd'];
+            $password = $_POST['passwordAd'];
       
 
-            $query1 = "select * from users where email = ?";
+            $query1 = "select * from admins where email = ?";
             $statement = $con ->prepare($query1);
             $statement -> bind_param("s",$email);
 
@@ -111,14 +109,14 @@ function verifyPassword()
             $result = $statement-> get_result();
 
             $row1 = $result -> fetch_assoc();
+           
             $pass = $row1['password'];
             if(!password_verify($password,$pass)){
                 return "Empty/Wrong password!";
             } else {
                 session_start();
-                $_SESSION['User'] = $row1['username'];
-                $_SESSION['UserId'] = $row1['id'];
-                header("Location: home.php");
+                $_SESSION['Admin'] = $row1['email'];
+                header("Location: adminPage.php");
                 exit;
             }
         } else

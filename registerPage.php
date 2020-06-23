@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title> login page</title>
+    <title> register page</title>
     <link rel="stylesheet" href="./stylel.css" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -20,15 +20,15 @@
         </nav>
     </header>
 
-    <h1>SIGN IN</h1>
+    <h1>SIGN UP</h1>
 
 
-    <form name="loginForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+    <form name="registerForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
 
         <div class="box">
             <label for="email">email:</label><br>
             <input type="email" id="email" name="email" class="email" />
-            <?php if (isset($_POST['Login'])) { ?>
+            <?php if (isset($_POST['Signup'])) { ?>
                 <span class="error"> <?php echo verifyEmail(); ?></span>
                 <br>
             <?php
@@ -37,15 +37,17 @@
 
             <label for="password">password:</label><br>
             <input type="password" id="password" name="password" class="password" />
-            <?php if (isset($_POST['Login'])) { ?>
+            <label for="password">confirm password:</label><br>
+            <input type="password" name="confpassword" class="password" />
+            <?php if (isset($_POST['Signup'])) { ?>
                 <span class="error"> <?php echo verifyPassword(); ?></span>
                 <br>
             <?php
             }
             ?>
-            <button type="submit" value="Login" on action="isEmpty();" name=Login class="btnLOGIN"> Login </button>
-            <a href="registerPage.php" class="btnSIGNUP">Sign Up</a>  
-            <a href="loginAdmin.php" class="btnSIGNUP">Login as admin</a>  
+            <label for="username">username:</label><br>
+            <input type="text" id="username" name="username" class="email" />
+            <button type="submit" value="Signup" name="Signup" class="btnSIGNUP"> SIGN UP </button>
         </div>
 
     </form>
@@ -65,11 +67,13 @@ function verifyEmail()
     if (!$con) {
         die(' Please Check Your Connection' . mysqli_error($con));
     } else {
-        if (isset($_POST['Login'])) {
+        if (isset($_POST['Signup'])) {
 
             $email = $_POST['email'];
+            $username = $_POST['username'];
+            $password = $_POST['password'];
 
-
+            
             $query = "select * from users where email = ?";
             $statement = $con ->prepare($query);
             $statement -> bind_param("s",$email);
@@ -77,12 +81,22 @@ function verifyEmail()
             $statement -> execute();
             $result = $statement-> get_result();
 
-            if (mysqli_num_rows($result) == 0) //  if ($result -> mysqli_num_rows() == 0) { 
+            if (mysqli_num_rows($result) > 0) { //  if ($result -> mysqli_num_rows() == 0) { 
+                return "You already have an account!<a href='loginPage.php'>Login</a>";
+            } else {
+                if (verifyPassword() == "") {
+                    $hashed_pass =  password_hash($password, PASSWORD_BCRYPT);
 
-                return "Empty/Invalid email! If you don't have an account yet, register first!";
+                    $sql = "insert into users (email,password,username) VALUES (?,?,?)";
+                    $statement = $con->prepare($sql);
+                    $statement->bind_param("sss", $email, $hashed_pass, $username);
 
-            else
-                return "";
+                    if ($statement->execute()) {
+                        header("Location: loginPage.php");
+                        exit;
+                    }
+                }
+            }
         } else
             return "";
     }
@@ -97,29 +111,18 @@ function verifyPassword()
     if (!$con) {
         die(' Please Check Your Connection' . mysqli_error($con));
     } else {
-        if (isset($_POST['Login'])) {
-
-            $email = $_POST['email'];
+        if (isset($_POST['Signup'])) {
             $password = $_POST['password'];
-      
+            $conf_pass =  $_POST['confpassword'];
 
-            $query1 = "select * from users where email = ?";
-            $statement = $con ->prepare($query1);
-            $statement -> bind_param("s",$email);
-
-            $statement -> execute();
-            $result = $statement-> get_result();
-
-            $row1 = $result -> fetch_assoc();
-            $pass = $row1['password'];
-            if(!password_verify($password,$pass)){
-                return "Empty/Wrong password!";
+            if ($password != $conf_pass) {
+                return "Passwords do not match!";
+            } else
+                if (strlen($password) < 8) {
+                return "Password too short(minimum 8 characters)";
             } else {
-                session_start();
-                $_SESSION['User'] = $row1['username'];
-                $_SESSION['UserId'] = $row1['id'];
-                header("Location: home.php");
-                exit;
+
+                return "";
             }
         } else
             return "";

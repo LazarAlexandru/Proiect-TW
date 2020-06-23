@@ -18,6 +18,7 @@ session_start();
 
     <header>
         <nav class="menu">
+
             <ul class="menu_items">
                 <li class="menu_item"><a href="home.php">HOME</a></li>
                 <li class="selected_item">CATALOG</li>
@@ -25,8 +26,11 @@ session_start();
                     <li class="menu_item">
                         <?php echo '<a href="myCoins.php">MY COINS</a>'; ?>
                     </li>
+                    <li class="menu_item">
+                        <?php echo '<a href="myCollection.php">MY COLLECTION</a>'; ?>
+                    </li>
                 <?php } ?>
-
+                <li class="menu_item"><a href="statistics.php"> STATISTICS</a></li>
                 <li class="menu_item"><a href="index.php">CONTACT</a></li>
 
                 <?php if (isset($_SESSION['User'])) { ?>
@@ -45,9 +49,10 @@ session_start();
         </nav>
 
     </header>
-
     <div class="main">
-    <a href="catalog.php" class="back">SHOW ALL COINS</a>
+
+        <a href="downloadAllcsv.php" class="back">DOWNLOAD ALL COINS(csv)</a>
+        <a href="downloadAllpdf.php" class="back">DOWNLOAD ALL COINS(PDF)</a>
         <form name="searchForm" action="search.php" method="post">
             <div class="search_box">
                 <div class="search">
@@ -72,10 +77,12 @@ session_start();
 
                     </ul>
                     <button type="submit" class="search_button">SEARCH</button>
+                    <br><br>
+                    <a href="catalog.php" class="back1">SHOW ALL COINS</a>
 
 
                 </div>
-                
+
             </div>
         </form>
         <div class="coins">
@@ -92,6 +99,8 @@ session_start();
 
 
                     $query = "select * from coins";
+                    $statement = $con->prepare($query);
+
                     $name = "";
                     $country = "";
                     $year = 0;
@@ -102,49 +111,76 @@ session_start();
                         $name = $_GET['name'];
                         $country = $_GET['country'];
                         $year = $_GET['year'];
-                        $query = "select * from coins where name = '$name' and country = '$country' and year = $year ";
+
+                        $query = "select * from coins where name = ? and country = ? and year = ? ";
+                        $statement = $con->prepare($query);
+                        $statement->bind_param("ssi", $name, $country, $year);
                     } else
                      if (isset($_GET['name']) && !empty($_GET['name']) && isset($_GET['country']) &&  !empty($_GET['country'])) {
                         $name = $_GET['name'];
                         $country = $_GET['country'];
-                        $query = "select * from coins where name = '$name' and country = '$country' ";
+
+                        $query = "select * from coins where name = ? and country = ? ";
+                        $statement = $con->prepare($query);
+                        $statement->bind_param("ss", $name, $country);
                     } else
                     if (isset($_GET['name']) && !empty($_GET['name']) && isset($_GET['year']) &&  !empty($_GET['year'])) {
                         $name = $_GET['name'];
                         $year = $_GET['year'];
-                        $query = "select * from coins where name = '$name' and year = $year ";
+
+                        $query = "select * from coins where name = ? and year = ? ";
+                        $statement = $con->prepare($query);
+                        $statement->bind_param("si", $name, $year);
                     } else
                    if (isset($_GET['country']) &&  !empty($_GET['country']) && isset($_GET['year']) &&  !empty($_GET['year'])) {
 
                         $country = $_GET['country'];
                         $year = $_GET['year'];
-                        $query = "select * from coins where  country = '$country' and year = $year";
+
+                        $query = "select * from coins where  country = ? and year = ?";
+                        $statement = $con->prepare($query);
+                        $statement->bind_param("si", $country, $year);
                     } else
                     if (isset($_GET['name']) && !empty($_GET['name'])) {
                         $name = $_GET['name'];
-                        $query = "select * from coins where name = '$name' ";
+
+                        $query = "select * from coins where name = ? ";
+                        $statement = $con->prepare($query);
+                        $statement->bind_param("s", $name);
                     } else
                     if (isset($_GET['country']) && !empty($_GET['country'])) {
-
                         $country = $_GET['country'];
 
-                        $query = "select * from coins where country = '$country' ";
+                        $query = "select * from coins where country = ? ";
+                        $statement = $con->prepare($query);
+                        $statement->bind_param("s", $country);
                     } else
                     if (isset($_GET['year']) && !empty($_GET['year'])) {
                         $year = $_GET['year'];
-                        $query = "select * from coins where year = $year";
+                        $query = "select * from coins where year = ?";
+                        $statement = $con->prepare($query);
+                        $statement->bind_param("i", $year);
                     }
 
-                    $result = mysqli_query($con, $query);
+                    $statement->execute();
+
+                    $result = $statement->get_result();
 
 
 
-                    if (mysqli_num_rows($result) == 0) { ?>
+                    if (mysqli_num_rows($result) == 0) { //  if ($result -> mysqli_num_rows() == 0) { 
+                ?>
 
                         <p>no coins!</p>
                         <?php
                     } else {
-                        while ($row = mysqli_fetch_assoc($result)) {
+                        while ($row = $result->fetch_assoc()) {
+                            if (isset($_GET['search'])) {
+                                $id = $row['id'];
+                                $update_query = "update coins set no_src = no_src + 1  where id = $id";
+                                $result1 = mysqli_query($con, $update_query);
+                            }
+
                         ?>
 
                             <li class="coin">
@@ -170,10 +206,33 @@ session_start();
                                                 Year : <?php echo $row['year']; ?>
                                             </span>
                                             <span>
-                                                <?php echo $row['composition']; ?> | <?php echo $row['weight']; ?> | <?php echo $row['diameter']; ?>
+                                                <?php echo $row['composition']; ?> | <?php echo $row['weight'] . " g"; ?> | <?php echo $row['diameter'] . " mm"; ?>
                                             </span>
+
                                         </div>
                                     </li>
+                                    <?php if (isset($_SESSION['User'])) {
+                                        $idUser = $_SESSION['UserId'];
+                                        $query2 = "select * from collections where id_user = ? and id_coin = ?";
+                                        $statement2 = $con->prepare($query2);
+                                        $statement2->bind_param("ii", $idUser, $row['id']);
+
+                                        $statement2->execute();
+
+                                        $result2 = $statement2->get_result();
+
+
+
+                                        if (mysqli_num_rows($result2) == 0) {
+                                    ?>
+                                            <br>
+                                            <li> <a href="add.php?id= <?php echo $row['id']; ?> " class="back1">ADD TO COLLECTION</a> </li>
+                                    <?php }
+                                    } ?>
+                                    <br>
+                                    <li><a href="downloadCoincsv.php?id= <?php echo $row['id']; ?>&name=<?php echo $row['name']; ?> " class="back1">DOWNLOAD(csv)</a>
+
+                                        <a href="downloadCoinpdf.php?id= <?php echo $row['id']; ?>&name=<?php echo $row['name']; ?> " class="back1">DOWNLOAD(PDF)</a></li>
 
 
                                 </ul>
@@ -192,5 +251,17 @@ session_start();
 
 </body>
 
-</html>
 
+
+<script>
+    function updateRSS() {
+
+        var xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.open("GET", "RSSfeed.php", true);
+        xmlhttp.send();
+
+    }
+</script>
+
+</html>
